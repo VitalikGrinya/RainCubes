@@ -21,8 +21,8 @@ public class Spawner : MonoBehaviour
         _pool = new ObjectPool<Cube>(
             createFunc: () => Instantiate(_cube),
             actionOnGet: OnGet,
-            actionOnRelease: (cube) => cube.gameObject.SetActive(false),
-            actionOnDestroy: (cube) => Destroy(cube),
+            actionOnRelease: cube => cube.gameObject.SetActive(false),
+            actionOnDestroy: cube => Destroy(cube),
             collectionCheck: true,
             defaultCapacity: _poolCapacity,
             maxSize: _poolMaxSize);
